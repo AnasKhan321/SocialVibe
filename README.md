@@ -1,4 +1,4 @@
-# SocialConnect
+# SocialVibe
 
 Welcome to SocialVibe - Your New Social Media Experience!
 
