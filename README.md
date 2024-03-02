@@ -7,13 +7,11 @@ Welcome to SocialVibe - Your New Social Media Experience!
 - [Features](#features)
 - [Getting Started](#getting-started)
   - [Installation](#installation)
-  - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 
-SocialConnect is a feature-rich social media website designed to provide users with a seamless and enjoyable experience in connecting with friends, sharing updates, and engaging with a vibrant community.
+SocialVibe is a feature-rich social media website designed to provide users with a seamless and enjoyable experience in connecting with friends, sharing updates, and engaging with a vibrant community.
 
 ## Features
 
@@ -37,4 +35,34 @@ SocialConnect is a feature-rich social media website designed to provide users w
    ```bash
      git clone https://github.com/AnasKhan321/SocialVibe
 
+2. **Install the Dependencies:**
+    ```bash
+        npm i
+
+  in both the folders 
+
+3. ** Make .env File and Provide this environment Variable:**
+   ```bash
+       #server
+        PORT=8000 # I prefered 8000 it still upon you 
+        CLIENT_HOST = Your Client Host where you host your Client App in Localhost 
+        HOST_EMAIL = Your Desired Email from Which You can send email to the user 
+        EMAIL_PASSWORD = Your password of that email address 
+        
+        SECRET_TOKEN = Your secret token for jwt Token
+
+
+
+       #Client
+       REACT_APP_BACKEND_URL=Your Backend Host
+ 4. **Start the Your Desire MongoDb Server  :**
+ 5. ** Start Your Backend Server :**
+    ```bash
+      node ./index.js
+
+  6. ** Start the React App :**
+      ```bash
+        npm run start 
+              
+    
    
