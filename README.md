@@ -36,6 +36,6 @@ SocialConnect is a feature-rich social media website designed to provide users w
 1. **Clone the Repository:**
    ```bash
 
-
+git clone https://github.com/AnasKhan321/SocialVibe
 
    
