@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Bebas+Neue&family=Dancing+Script&family=Kalam:wght@300&family=Lora&family=Manrope:wght@300&family=Martel+Sans:wght@600&family=Merriweather:wght@300&family=Mooli&family=Mukta:wght@300&family=Noto+Serif&family=Pacifico&family=Poppins:ital,wght@0,300;0,400;0,500;1,300&family=Potta+One&family=Raleway:wght@500&family=Roboto+Condensed&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,400&family=Tangerine:wght@700&family=Teko:wght@500&family=Tilt+Prism&family=Wavefont:wght@100&display=swap');
+body{
+    background-color: black;
+    color: white;
+    font-family: 'Poppins ', sans-serif;
+    overflow-x: hidden;
+
+}
+.Logo a{
+    font-family: 'Adlam', cursive;
+ font-weight: bold;
+ font-size: 2.5rem  ;
+}
+
+.sidebar{
+    border-right: 2px solid rgb(38, 37, 37);
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.Home{
+    position: relative;
+      width: calc(100vw - 18rem ); 
+      left: 18rem ;
+}
+
+.card1{
+    width: 500px ;
+    border-bottom: 2px solid rgba(48, 48, 48, 0.714);
+    border-top: 2px solid rgba(48, 48, 48, 0.714);
+    background: #0f0f0f;
+    margin: 10px 0px ;
+    cursor: pointer;
+
+}
+
+.suggesteduser{
+    position: absolute;
+    top: 3rem ;
+    right: 10rem ;
+}
+
+.third{
+    width: 150px ;
+}
+
+.myp{
+    border-bottom: 2px solid rgb(40, 39, 39);
+}
+.EditProfile{
+    margin-left: 40%;
+}
+.nav-item:hover{
+    /* color: gray; */
+    /* filter: invert(50%); */
+    background-color: #252525;
+}
+
+.card2{
+    width: 700px;
+    border-bottom: 2px solid rgba(48, 48, 48, 0.714);
+    border-top: 2px solid rgba(48, 48, 48, 0.714);
+    background: #0f0f0f;
+    margin: 0 auto;
+}
+
+
+
+.customerFileBtn{
+    width: 50%;
+    margin:auto;
+}
+
+input[type='file']{
+    width: 130px ;
+    padding: 13px 10px  !important;
+    background-color: rgb(31, 31, 255);
+    border: 2px solid white;
+    border-radius: 10px ;
+}
+
+.customerFileBtn input[type='file'] {
+    padding:6px 0 0 7px;
+    &::-webkit-file-upload-button {
+        display: none;
+    }
+    &::file-selector-button {
+        display: none;
+    }
+    margin-top: 5px ;
+    margin-bottom: 20px ;
+}
+
+.customerFileBtn label:hover {
+    background-color: #dde0e3;
+    cursor: pointer;
+}
+/* .alert-dialog--material {
+    width: 100%;
+}
+
+.alert-dialog{
+    width: 500px ;
+} */
