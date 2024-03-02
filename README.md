@@ -45,16 +45,16 @@ SocialVibe is a feature-rich social media website designed to provide users with
    ```bash
        #server
         PORT=8000 # I prefered 8000 it still upon you 
-        CLIENT_HOST = Your Client Host where you host your Client App in Localhost 
-        HOST_EMAIL = Your Desired Email from Which You can send email to the user 
-        EMAIL_PASSWORD = Your password of that email address 
+        CLIENT_HOST = #Your Client Host where you host your Client App in Localhost 
+        HOST_EMAIL = #Your Desired Email from Which You can send email to the user 
+        EMAIL_PASSWORD = #Your password of that email address 
         
-        SECRET_TOKEN = Your secret token for jwt Token
+        SECRET_TOKEN = #Your secret token for jwt Token
 
 
 
        #Client
-       REACT_APP_BACKEND_URL=Your Backend Host
+       REACT_APP_BACKEND_URL=  #Your Backend Host
  4. **Start the Your Desire MongoDb Server  :**
  5. ** Start Your Backend Server :**
     ```bash
