@@ -1,4 +1,4 @@
-import React , {useContext , useEffect , useState} from 'react'
+import React , {useContext , useEffect , useState  , useRef} from 'react'
 import Profile  from  '../Images/profile-round-1342-svgrepo-com.svg' 
 import Like from '../Images/heart-svgrepo-com.svg'
 import chat from '../Images/chat-round-svgrepo-com.svg'
@@ -10,7 +10,9 @@ import { useParams , Link} from 'react-router-dom';
 import {MyContext} from '../ContextApi/MyContext.js'
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-
+import { RiDeleteBin6Line } from "react-icons/ri";
+import {useGSAP}  from "@gsap/react"  ; 
+import gsap from "gsap"  ; 
 
 const PostDetail = () => {
     const {MyInfo , user , Mytoken} = useContext(MyContext)
@@ -21,7 +23,11 @@ const PostDetail = () => {
     const [User, setUser] = useState({})
     const navigate = useNavigate()
 
+    const [currentsrc , setcurrentsrc]  = useState(Like)
+
     const [showComments, setshowComments] = useState(false)
+
+    const commentref = useRef(null)
 
     const FetchData2 = async()=>{
 
@@ -66,6 +72,20 @@ const PostDetail = () => {
         FetchData2()
         FetchData()
     },[])
+
+
+    useGSAP(()=>{
+
+      if(showComments){
+        gsap.from(".allcomments"  , {
+          opacity : 0, 
+          duration : 1,
+          ease: "steps(12)",
+        })
+      }
+    
+
+    },[showComments])
 
     // Convert the Date for readable Date format 
     const ConvertDate = (dateString)=>{
@@ -157,7 +177,7 @@ const PostDetail = () => {
 
       if (response.ok) {
         const data = await response.json()
-        toast.success('Post Deleted Successfully ')
+        toast.success('It Will be Delted ')
         navigate('/')
       }
       else{
@@ -184,7 +204,7 @@ const PostDetail = () => {
 
                     {Post?.User?.email == User?.email   && 
 
-                      <button  className='cursor-pointer  px-4 py-2  bg-red-500 text-white ' onClick={deletePost} >Delete </button>
+                      <button  className='cursor-pointer   text-white ' onClick={deletePost} ><RiDeleteBin6Line className="text-2xl  text-red-500" /> </button>
                     }
 
                      {Post?.User?.email !== User?.email   && 

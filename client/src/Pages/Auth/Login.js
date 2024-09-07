@@ -49,8 +49,9 @@ const Login = () => {
         .then(data => {
           if(data.success){
             SaveToLocal(data.token)
+            navigate('/')
             toast.success('Log In Successfully'); 
-              navigate('/')
+              
           }else{
             toast.error(data.error);
           }
@@ -138,7 +139,7 @@ const LoginWithGoogle= (credentials)=>{
       </div>
 
       <div>
-        <button type="submit" className="flex w-full justify-center rounded-md bg-yellow-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600">Log in</button>
+        <button type="submit" className="text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full">Log in</button>
       </div>
     </form>
 

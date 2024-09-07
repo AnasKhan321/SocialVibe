@@ -86,7 +86,7 @@ const Post = (props) => {
         <Link to={`/Post/${Post?._id}`}> 
 
         <div className="img mt-5 border rounded ">
-            <img src={`${process.env.REACT_APP_BACKEND_URL}/PostImg/${Post?.postImg}`} alt="" width="490px "/>
+            <img src={`${process.env.REACT_APP_BACKEND_URL}/PostImg/${Post?.postImg}`} alt="" width="490px"   />
         </div>
         </Link>
 

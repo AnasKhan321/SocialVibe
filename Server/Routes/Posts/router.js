@@ -5,6 +5,9 @@ const Post = require('../../Models/Post.js');
 const Comment = require('../../Models/Comment.js')
 const MiddleWare = require('../../MiddleWare/JWTtoUser.js')
 const multer = require('multer');
+const {Queue}  = require("bullmq")
+const logger = require("../../logger.js")
+const queue = new Queue('DeletPost');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -30,8 +33,8 @@ router.post('/upload' , MiddleWare ,  upload.single('image'),  async(req,res)=>{
             User : req.user
         })
         res.json({success : true })
-    } catch (error) {
-        console.log(error)
+    } catch (err) {
+      logger.error(err)
         res.status(500).json({success : false})
     }
 })
@@ -50,38 +53,20 @@ router.get('/post/:id' , MiddleWare , async(req,res)=>{
     res.json({success : true , post : foundPost , comments : Comments})
   } catch (error) {
 
-    console.log(error);
+    logger.error(error);
     res.status(500).json({success : false , error : error})
 
   }
 })
 
 router.get('/delete/:id' , MiddleWare , async(req,res)=>{
-  try {
-    const {email} = req.user 
-    const postId = req.params.id;
-    const foundedPost = await Post.findById(postId)
 
-    if (!foundedPost) {
-      return res.status(404).json({ message: "Post not found" , success : false , error : "Not Found " });
-    }
-    else{
-      const {userEmail} = foundedPost ; 
+  const {email} = req.user  
+  const postId =req.params.id;
+  await queue.add('DeletPost', { email: email  , postId : postId  });
 
-      if(userEmail == email){
-        await foundedPost.deleteOne()
-        return res.json({success : true })
-        
-      }else{
-        return res.json({success : false , error : "You are not the uer "})
-      }
+  res.json({success : true , message  : "Your Post will be delted"})
 
-    }
-    
-
-  } catch (error) {
-    return res.status(500).json({success : false , error : error})
-  }
 })
 
 
@@ -93,7 +78,7 @@ router.get('/me' , MiddleWare , async(req,res)=>{
     res.json({success : true , Data : Posts})
     
   } catch (error) {
-    console.log(error)
+    logger.error(error);
     res.status(500).json({success : false , error : error})
   }
 })
@@ -162,6 +147,7 @@ router.get('/likePost/:id' , MiddleWare , async(req,res)=>{
       res.json({success : true  , post : UpdatePost})
 
   }catch(error){
+    logger.error(error);
     res.status(500).json({success : false , error : error })
   }
 })
@@ -176,6 +162,7 @@ router.get('/dislikePost/:id' , MiddleWare , async(req,res)=>{
       res.json({success : true , post : UpdatePost })
 
   }catch(error){
+    logger.error(error);
     res.status(500).json({success : false , error : error })
   }
 })

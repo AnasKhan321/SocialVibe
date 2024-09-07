@@ -75,9 +75,9 @@ body{
 }
 
 input[type='file']{
-    width: 130px ;
+    width  : 100% ; 
     padding: 13px 10px  !important;
-    background-color: rgb(31, 31, 255);
+
     border: 2px solid white;
     border-radius: 10px ;
 }

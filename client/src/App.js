@@ -18,12 +18,12 @@ import Following from './Pages/Following.js'
 import Follower  from './Pages/Follower.js'
 import ForgetPassword from './Pages/Auth/ForgetPassword.js'
 import ChangePassword from './Pages/Auth/ChangePassword.js'
-
+import { IoCloseCircle } from "react-icons/io5";
 
 function App() {
   const [User, setUser] = useState({})
   const {MyInfo , user , Mytoken , IsAuthenticated} = useContext(MyContext)
-  
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const FetchData = async()=>{
     if(IsAuthenticated){
@@ -49,6 +49,10 @@ function App() {
   
   }
 
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   useEffect(() => {
       FetchData()
       
@@ -61,7 +65,7 @@ function App() {
   const shouldHideNavbar = hideNavbarOnRoutes.includes(window.location.pathname);
 
   // If Navbar should be hidden, don't render it
-  const navbar = shouldHideNavbar ? null : <Navbar />;
+  const navbar = shouldHideNavbar ? null : <Navbar  setopen={setModalOpen} />;
   
 
 
@@ -70,13 +74,13 @@ function App() {
       <BrowserRouter>
          {navbar}
          <ToastContainer /> 
+         <CreatePost  isOpen={isModalOpen} onClose={closeModal}/>
              <Routes>
                 <Route  exact path='/' element= { <Home key="home"/> } />
                 <Route  exact path='/signup' element= { <Signup key="signup"/> } />
                 <Route exact path='/login'  element={<Login key="Login" />} /> 
                 <Route exact path='/Profile/:id'  element={<Profile key="Profile" />} /> 
                 <Route  exact path='/edit' element={  <EditProfile key="EditProfile " /> } />
-                <Route  exact path="/createPost"  element={<CreatePost key="createPost"/>} />
                 <Route  exact path="/Post/:id"  element={<PostDetail key="PostDetail"/>} />
                 <Route   exact path="/search"  element={<Search  key="search" />} />
                 <Route   exact path="/following/:id"  element={<Following  key="following" />} />
